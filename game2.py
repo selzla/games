@@ -12,6 +12,7 @@ from pygame.locals import (
     QUIT,
 )
 
+pygame.mixer.init()
 pygame.init()
 
 SCREEN_WIDTH = 800
@@ -131,9 +132,9 @@ while running:
         screen.blit(entity.surf, entity.rect)
     screen.blit(player.surf, player.rect)
 
-    # if pygame.sprite.spritecollideany(player, enemies):
-    #     player.kill()
-    #     running = False
+    if pygame.sprite.spritecollideany(player, enemies):
+        player.kill()
+        running = False
 
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(30)
